@@ -1,0 +1,27 @@
+td {
+    border-style: solid;
+    border-width: 1px;
+
+    margin: 0px;
+    padding: 0px;
+
+    width: 100px;
+    height: 100px;
+
+    text-align: center;
+    font-size: 10em;
+}
+
+.winner {
+    font-size: 3em;
+}
+
+.won {
+    font-size: 3em;
+    background-color: red;
+}
+
+.drawn {
+    font-size: 3em;
+    background-color: yellow;
+}
