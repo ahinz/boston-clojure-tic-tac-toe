@@ -64,6 +64,9 @@
 (defn update-board! [r c s]
   (swap! app-state assoc-in [:board r c] s))
 
+(defn cell-is-empty? [board r c]
+  (= :e (get-in board [r c])))
+
 (defn tic-tac-toe-view [app owner]
   (reify
     om/IInitState
@@ -96,7 +99,9 @@
                                     (map-indexed
                                      (fn [col-idx col]
                                        (dom/td #js {:onClick (fn [e]
-                                                               (if (board-is-active? (:board @app))
+                                                               (if (and
+                                                                    (cell-is-empty? (:board @app) row-idx col-idx)
+                                                                    (board-is-active? (:board @app)))
                                                                  (update-board! row-idx col-idx (next-players-symbol (:board @app)))))}
                                                (get sym->char col))) row))) (:board app)))))))
 
